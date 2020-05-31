@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrap-btn-fb {
+        width: 50%;
+        margin: auto;
+        margin-top: 20px;
+        text-align: center;
+      }
+      .btn-fb {
+        height: 40px;
+        border-radius: 10px;
+        background-color: blue;
+      }
+      .btn-fb a {
+        color: white;
+        font-weight: bold;
+        text-decoration: none;
+      }
+      form {
+        width: 50%;
+        margin: auto;
+        text-align: center;
+      }
+      .input-form {
+        text-align: center;
+        width: 80%;
+        height: 25px;
+        margin: 10px;
+      }
+      .button {
+        height: 30px;
+        width: 20%;
+        margin: auto;
+        background-color: rgb(91, 91, 209);
+        color: white;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h3>Prueba de Passport con jsonwebtoken</h3>
+    <form onsubmit="register(event)">
+      <h5>REGISTRO</h5>
+      <input type="text" placeholder="user" class="input-form" /><br />
+      <input type="password" placeholder="password" class="input-form" /><br />
+      <button type="submit" class="input-form button">Enviar</button>
+    </form>
+    <form onsubmit="login(event)">
+      <h5>LOGIN</h5>
+      <input type="text" placeholder="user" class="input-form" /><br />
+      <input type="password" placeholder="password" class="input-form" /><br />
+      <button type="submit" class="input-form button">Enviar</button>
+    </form>
+    <div class="wrap-btn-fb">
+      <button class="btn-fb">
+        <a href="/api/auth/facebook">Login with Facebook</a>
+      </button>
+    </div>
+
+    <script>
+      function register(event) {
+        event.preventDefault();
+      }
+      function login(event) {
+        event.preventDefault();
+      }
+    </script>
+  </body>
+</html>
