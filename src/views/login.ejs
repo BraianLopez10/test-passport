@@ -43,17 +43,42 @@
   </head>
 
   <body>
-    <h3>Prueba de Passport con jsonwebtoken</h3>
     <form onsubmit="register(event)">
       <h5>REGISTRO</h5>
-      <input type="text" placeholder="user" class="input-form" /><br />
-      <input type="password" placeholder="password" class="input-form" /><br />
+      <input
+        type="text"
+        placeholder="Nombre"
+        class="input-form"
+        name="name"
+      /><br />
+      <input
+        type="text"
+        placeholder="Username"
+        name="username"
+        class="input-form"
+      /><br />
+      <input
+        type="password"
+        placeholder="Password"
+        class="input-form"
+        name="password"
+      /><br />
       <button type="submit" class="input-form button">Enviar</button>
     </form>
     <form onsubmit="login(event)">
       <h5>LOGIN</h5>
-      <input type="text" placeholder="user" class="input-form" /><br />
-      <input type="password" placeholder="password" class="input-form" /><br />
+      <input
+        type="text"
+        placeholder="Username"
+        class="input-form"
+        name="username"
+      /><br />
+      <input
+        type="password"
+        placeholder="Password"
+        class="input-form"
+        name="password"
+      /><br />
       <button type="submit" class="input-form button">Enviar</button>
     </form>
     <div class="wrap-btn-fb">
@@ -65,9 +90,42 @@
     <script>
       function register(event) {
         event.preventDefault();
+
+        let datos = {
+          [event.target[0].name]: event.target[0].value,
+          [event.target[1].name]: event.target[1].value,
+          [event.target[2].name]: event.target[2].value,
+        };
+        fetch("http://localhost:4000/api/register", {
+          method: "POST",
+          body: JSON.stringify(datos),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {
+          res.json().then((datos) => {
+            console.log(datos);
+          });
+        });
       }
       function login(event) {
         event.preventDefault();
+
+        let datos = {
+          [event.target[0].name]: event.target[0].value,
+          [event.target[1].name]: event.target[1].value,
+        };
+        fetch("http://localhost:4000/api/auth/login", {
+          method: "POST",
+          body: JSON.stringify(datos),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }).then((res) => {
+          res.json().then((datos) => {
+            console.log(datos);
+          });
+        });
       }
     </script>
   </body>

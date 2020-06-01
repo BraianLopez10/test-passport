@@ -1,3 +1,4 @@
+"use strict";
 const express = require("express");
 require("./db");
 const app = express();
@@ -8,7 +9,11 @@ const path = require("path");
 const middlewares = require("./middleware");
 const routeAuth = require("./routes/auth");
 const routeUser = require("./routes/user");
+const cors = require("cors");
+const morgan = require("morgan");
 
+app.use(morgan("dev"));
+app.use(cors());
 app.use(bodyparser.json());
 app.use(passport.initialize());
 
